@@ -1,5 +1,5 @@
 {
-  "name": "08-websocket-server",
+  "name": "websocket-turnos",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Felipe Buitrago",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
