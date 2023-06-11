@@ -8,3 +8,5 @@ class Ticket {
         this.numero     = numero;
     }
 }
+
+module.exports = Ticket;
