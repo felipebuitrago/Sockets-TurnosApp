@@ -16,10 +16,15 @@ socket.on('disconnect', () => {
     btnCrear.disabled = true;
 });
 
+socket.on('ultimo-ticket', (ultimo) => {
+
+    lblNuevoTicket.innerHTML = "Ticket " + ultimo; 
+});
+
 btnCrear.addEventListener( 'click', () => {
     
     socket.emit( 'siguiente-ticket', undefined, ( ticket ) => {
-        console.log( ticket );
+        lblNuevoTicket.innerHTML = ticket; 
     });
 
 });

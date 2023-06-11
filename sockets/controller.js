@@ -7,15 +7,14 @@ const socketController = (socket) => {
     socket.on('disconnect', () => {
     });
 
+    socket.emit('ultimo-ticket', ticketControl.ultimo);
+
     socket.on('siguiente-ticket', ( payload, callback ) => {
         
         const siguiente = ticketControl.siguiente();
         callback( siguiente );
-
-        socket.broadcast.emit('siguiente-ticket', payload );
     })
 }
-
 
 module.exports = {
     socketController
