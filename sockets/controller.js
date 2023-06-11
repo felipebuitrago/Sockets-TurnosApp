@@ -7,12 +7,12 @@ const socketController = (socket) => {
     socket.on('disconnect', () => {
     });
 
-    socket.on('enviar-mensaje', ( payload, callback ) => {
+    socket.on('siguiente-ticket', ( payload, callback ) => {
         
-        const id = 123456789;
-        callback( id );
+        const siguiente = ticketControl.siguiente();
+        callback( siguiente );
 
-        socket.broadcast.emit('enviar-mensaje', payload );
+        socket.broadcast.emit('siguiente-ticket', payload );
     })
 }
 
