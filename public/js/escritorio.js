@@ -31,7 +31,6 @@ socket.on('disconnect', () => {
 
 socket.on('ultimo-ticket', (ultimo) => {
 
-//    lblNuevoTicket.innerHTML = "Ticket " + ultimo; 
 });
 
 btnAtender.addEventListener( 'click', () => {
