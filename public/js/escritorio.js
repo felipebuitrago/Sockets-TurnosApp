@@ -1,6 +1,8 @@
 // HTML
 const lblEscritorio = document.querySelector('h1');
 const btnAtender = document.querySelector('button');
+const lblTicket = document.querySelector('small');
+const divAlerta = document.querySelector('.alert');
 
 const searchParams = new URLSearchParams(window.location.search);
 
@@ -12,6 +14,8 @@ if( !searchParams.has('escritorio') ){
 
 const escritorio = searchParams.get('escritorio');
 lblEscritorio.innerHTML = escritorio;
+
+divAlerta.style.display = 'none';
 
 const socket = io();
 
@@ -32,8 +36,13 @@ socket.on('ultimo-ticket', (ultimo) => {
 
 btnAtender.addEventListener( 'click', () => {
     
-    // socket.emit( 'siguiente-ticket', undefined, ( ticket ) => {
-    //     lblNuevoTicket.innerHTML = ticket; 
-    // });
+    socket.emit( 'atender-ticket', { escritorio }, ( {ok, ticket, msg} ) => {
+         
+        if (!ok) {
+            lblTicket.innerHTML = 'Nadie.';
+            return divAlerta.style.display = '';
+        }
+        lblTicket.innerHTML = 'Ticket ' + ticket.numero;
+    });
 
 });
